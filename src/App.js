@@ -6,7 +6,7 @@ import Character from './components/Character'
 const App = () => {
   const [ data , setData ] = useState([])
     useEffect(() => {
-      axios.get('https://swapi.dev/api/people/')
+      axios.get(`https://swapi.dev/api/people/`)
       .then(response => {
         console.log('get' , response.data.results)
         setData(response.data.results)
@@ -26,13 +26,15 @@ const App = () => {
     <div className="App">
       <h1 className="Header">Characters</h1>
       <div className="name">
-      {data.map( (person , index) => {
-        return <Character
-        key ={index}
+      {data.map( (person ) => {
+        return ( 
+        <Character
+        key = {person.name}
         name = {person.name} 
         year = {person.birth_year}
-        films = {person.films} 
+        films = {person.films.length}
         ships = {person.starships} />
+        )
       })}
       </div>
     </div>

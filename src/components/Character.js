@@ -1,27 +1,32 @@
 // Write your Character component here
 import React from "react"
+import styled from "styled-components"
+// import Movies from './Movies'
 
-const Character = (props) => {
+export default function Character  (props)  {
     console.log('look' , props)
 
-    const movies = props.films;
-    const listItems = movies.map((movie) =>
-    <li key={movie.toString()}>
-        {movies}</li>
-  );
-
-
-
     return (
-        <div className="top">
-            <h2>{props.name}{props.birth_year}</h2>
+        <CharacterStyle>
+            <Name>{props.name}</Name>
+            <h2>{props.birth_year}</h2>
             <div className="bottom">
-                <ul>{listItems}</ul>
+                <p>Has been in {props.films} movies</p>
                 <p>Starships{props.starships}</p>
                 <p>Vehicles</p>
             </div>
-        </div>
+        </CharacterStyle>
     )
 };
 
-export default Character;
+const CharacterStyle = styled.div ` 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #529752;
+`
+const Name = styled.h2 `
+    color: red;
+    font-size: bolder;
+    opacity: 50%;
+    `
